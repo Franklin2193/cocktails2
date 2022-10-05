@@ -15,7 +15,11 @@
                     <h2 class="mt-5">
                         $<%= @cocktail.price%>
                     </h2>
-                    <button class="btn btn-primary btn-rounded"><%= link_to "Book this #{@cocktail.name}", new_cocktail_booking_path(@cocktail) %></button>
+                    <% if @cocktail.availability > 0 %>
+                      <button class="btn btn-primary btn-rounded"><%= link_to "Book this #{@cocktail.name}", new_cocktail_booking_path(@cocktail) %></button>
+                    <% else %>
+                      <%= "This cocktail is not available at this moment, please try later" %>
+                    <% end %>
                 </div>
         </div>
     </div>
