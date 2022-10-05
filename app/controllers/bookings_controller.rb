@@ -12,6 +12,8 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.cocktail = @cocktail
     if @booking.save
+      @cocktail.availability = @cocktail.availability - 1
+      @cocktail.save
       redirect_to booking_path(@booking)
     else
       render :new
