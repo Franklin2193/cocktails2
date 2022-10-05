@@ -25,9 +25,7 @@
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :role,
                 required: true,
-                autofocus: true,
-                collection: ["seller", "customer"],
-                input_html: { autocomplete: "role" }%>
+                collection: ["Seller", "Customer"]%>
     <%= f.input :avatar,
                 required: true,
                 as: :file%>
