@@ -8,6 +8,10 @@
       <%= cocktail.price %>
       <%= cocktail.place %>
       <%= cocktail.availability %>
+      <% if cocktail.user == current_user %>
+        <%= link_to "Edit this cocktail", edit_cocktail_path(cocktail) %>
+        <%= link_to "Delete this cocktail", cocktail_path(cocktail), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
