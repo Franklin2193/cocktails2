@@ -49,6 +49,10 @@
                         <% else %>
                           <%= "Not available at this moment" %>
                         <% end %>
+                        <% if cocktail.user == current_user %>
+                          <%= link_to "Edit this cocktail", edit_cocktail_path(cocktail) %>
+                          <%= link_to "Delete this cocktail", cocktail_path(cocktail), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                        <% end %>
                     </div>
                 </div>
                 <% end %>

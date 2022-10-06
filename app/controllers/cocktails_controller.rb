@@ -1,6 +1,6 @@
 class CocktailsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show] # Saltar la autentificación en el index
-  before_action :set_cocktail, only: %i[destroy show]
+  before_action :set_cocktail, only: %i[destroy show edit update]
 
   def new
     @cocktail = Cocktail.new
@@ -23,9 +23,21 @@ class CocktailsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    @cocktail.update(cocktail_params)
+    if @cocktail.save
+      redirect_to cocktail_path(@cocktail)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @cocktail.destroy
-    redirect_to_ cocktails_path, status: :seed_other
+    redirect_to cocktails_path, status: :seed_other
   end
 
   private
