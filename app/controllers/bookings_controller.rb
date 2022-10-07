@@ -23,12 +23,12 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking.destroy
-    redirect_to 'cocktails/index'
+   @booking.destroy
+   redirect_to "cocktails/index"
+   #redirect_to bookings_path, notice: "Deleted Successfully!"
   end
 
   private
-
   def booking_params
     params.require(:booking).permit(:date)
   end
